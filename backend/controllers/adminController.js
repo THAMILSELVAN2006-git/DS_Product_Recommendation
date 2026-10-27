@@ -58,7 +58,17 @@ exports.getPopularProducts = async (req, res) => {
         },
       },
       { $unwind: "$product" },
-      { $project: { name: "$product.name", views: 1, _id: 0 } },
+      {
+        $project: {
+          name: "$product.name",
+          views: 1,
+          _id: 0,
+          imageUrl: "$product.imageUrl",
+          category: "$product.category",
+          price: "$product.price",
+          productId: "$product._id",
+        },
+      },
     ]);
     res.json({ success: true, data: results });
   } catch (err) {
