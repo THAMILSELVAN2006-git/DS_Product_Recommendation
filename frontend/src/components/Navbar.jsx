@@ -39,12 +39,34 @@ export default function Navbar() {
                 </span>
               </button>
               {menuOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg text-sm z-50">
-                  <Link to="/profile" className="block px-4 py-2 hover:bg-gray-50" onClick={() => setMenuOpen(false)}>Profile</Link>
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-xl text-sm z-50 py-1 overflow-hidden">
+                  <div className="px-4 py-2.5 border-b border-gray-100 bg-gray-50/50">
+                    <p className="font-semibold text-gray-800 text-xs truncate">{user.name}</p>
+                    <p className="text-[11px] text-gray-500 truncate">{user.email}</p>
+                  </div>
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 hover:bg-gray-50 text-gray-700 text-xs font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    👤 My Profile
+                  </Link>
                   {user.role === "admin" && (
-                    <Link to="/admin" className="block px-4 py-2 hover:bg-gray-50" onClick={() => setMenuOpen(false)}>Admin</Link>
+                    <Link
+                      to="/admin"
+                      className="block px-4 py-2 hover:bg-indigo-50 text-indigo-600 text-xs font-semibold"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      🛡️ Admin Dashboard
+                    </Link>
                   )}
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-gray-50 text-red-500">Logout</button>
+                  <div className="border-t border-gray-100 my-1" />
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 hover:bg-red-50 text-red-600 text-xs font-medium"
+                  >
+                    🚪 Logout
+                  </button>
                 </div>
               )}
             </div>
